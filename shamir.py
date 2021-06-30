@@ -29,10 +29,11 @@ def SecretDistribution(n, t, s, filename):
 
     """---------------------------------------
         打开文件写入函数的系数，素数q的数值，t的数值，n个采样点的信息
-        line 1: f(x)
-        line 2: q
-        line 3: t
-        line 4: n points of f(x) 按照x,y,x,y...的顺序排序
+        line 1: f(x)函数的各项系数
+        line 2: q素数的数值
+        line 3: t函数的项数
+        line 4: 函数上n个点的x数值
+        line 5: 函数上n个点的y数值
     ---------------------------------------"""
     file = open(filename, mode='w')
     a_str = " ".join([str(x) for x in a])
@@ -89,10 +90,10 @@ def SecretRecovery(filename):
 
 if __name__ == '__main__':
     filename = "key_book"
-    n = 4
-    t = 3
-    s = 2
-    SecretDistribution(n=n, t=t, s=2, filename=filename)
+    n = 6
+    t = 5
+    s = 20
+    SecretDistribution(n=n, t=t, s=s, filename=filename)
     r = SecretRecovery(filename=filename)
     if r == s:
         print("success")
