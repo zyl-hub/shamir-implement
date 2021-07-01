@@ -90,12 +90,16 @@ def SecretRecovery(filename):
 
 if __name__ == '__main__':
     filename = "key_book"
-    n = 6
-    t = 5
+    n = 7
+    t = 6
     s = 20
     SecretDistribution(n=n, t=t, s=s, filename=filename)
     r = SecretRecovery(filename=filename)
     if r == s:
+        print("r: ", r)
+        print("s: ", s)
         print("success")
     else:
+        print("r: ", r)
+        print("s: ", s)
         print("fail")
