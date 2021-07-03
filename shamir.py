@@ -1,5 +1,6 @@
 from random import randint
 from primes import get_large_enough_prime
+from decimal import Decimal
 
 
 def SecretDistribution(n, t, s, filename):
@@ -83,16 +84,36 @@ def SecretRecovery(filename):
         x = 1
         for m in range(t):
             if m != j:
-                x = x*(points_x_list[m]/(points_x_list[m]-points_x_list[j]))
+                x = Decimal(x*(points_x_list[m])/Decimal((points_x_list[m]-points_x_list[j])))
         r += points_y_list[j]*x
     return r
 
 
 if __name__ == '__main__':
-    filename = "key_book"
+    """---------------------------------------
+        测试用例
+    ---------------------------------------"""
+    # test 1 success--------------------------
     n = 7
     t = 6
-    s = 20
+    s = 271231
+    # ----------------------------------------
+    # test 2 success--------------------------
+    # n = 8
+    # t = 7
+    # s = 1016076321
+    # ----------------------------------------
+    # test 3 success--------------------------
+    # n = 9
+    # t = 8
+    # s = 832473412341234112
+    # ----------------------------------------
+    # test 4 fail-----------------------------
+    # n = 9
+    # t = 8
+    # s = 832473412341234112123
+    # ----------------------------------------
+    filename = "key_book"
     SecretDistribution(n=n, t=t, s=s, filename=filename)
     r = SecretRecovery(filename=filename)
     if r == s:
