@@ -84,6 +84,7 @@ def SecretRecovery(filename):
         x = 1
         for m in range(t):
             if m != j:
+                # 使用Decimal来提高运算的精度
                 x = Decimal(x*(points_x_list[m])/Decimal((points_x_list[m]-points_x_list[j])))
         r += points_y_list[j]*x
     return r
